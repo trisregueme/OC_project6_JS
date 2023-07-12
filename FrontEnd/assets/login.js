@@ -17,7 +17,7 @@ loginSubmit.addEventListener("submit", async (event) => {
         if (response.ok) {
             const res = await response.json()
             localStorage.setItem('token', `${res.token}`)
-            window.location.replace("../index.html")
+            window.location.replace("../../index.html")
         } else { 
             window.alert(`Combinaison e-mail / mot de passe invalide`)
         }

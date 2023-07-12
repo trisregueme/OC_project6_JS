@@ -8,8 +8,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
-	<script type ="module" src="./assets/mainscript.js"></script>
+	<link rel="stylesheet" href="./FrontEnd/assets/style.css">
+	<script type ="module" src="./FrontEnd/assets/mainscript.js"></script>
 	<script src="https://kit.fontawesome.com/4174946f8e.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -24,15 +24,15 @@
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li><a href="./assets/login.html" alt="loginpage">login</a></li>
-				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+				<li><a href="./FrontEnd/assets/login.html" alt="loginpage">login</a></li>
+				<li><img src="./FrontEnd/assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<section id="introduction">
 			<figure>
-				<img src="./assets/images/sophie-bluel.png" alt="profil picture of Sophie Bluel">
+				<img src="./FrontEnd/assets/images/sophie-bluel.png" alt="profil picture of Sophie Bluel">
 				<a href="#modal-admin" class="display_none btn-modifier js-modal">
 					<i class="fa-regular fa-pen-to-square fa-lg"></i> 
 					Modifier
@@ -89,23 +89,45 @@
 	</main>
     <aside id="modal-admin" class="display_none" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal">
         <section class="modal-wrapper js-modal-stop">
-            <button class="js-modal-close"><i class="fa-solid fa-xmark fa-xl"></i></button>
+            <button class="modal-gallery-close-xmark js-modal-close"><i class="fa-solid fa-xmark fa-xl"></i></button>
             <h2>Galerie photo</h2>
-			<div id="modal-galery"></div>
+			<div id="modal-gallery"></div>
 			<hr>
 			<button id="addPhoto">Ajouter une photo</button>
-			<a href="#" id="deleteGalery">Supprimer la galerie</a>
+			<a href="#" id="deleteGallery">Supprimer la galerie</a>
 		</section>
     </aside>
-	<aside id="modal-add-projet" class="display_none" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal">
-        <section class="modal-wrapper js-modal-stop">
-            <button class="js-modal-close"><i class="fa-solid fa-xmark fa-xl"></i></button>
-            <h2>Galerie photo</h2>
-			<div id="modal-galery"></div>
-			<hr>
-			<button id="addPhoto">Ajouter une photo</button>
-			<a href="#" id="deleteGalery">Supprimer la galerie</a>
-		</section>
+	<aside id="modal-add-project" class="display_none" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal">
+			<form name="form_add" method="post" id="add-project" enctype="multipart/form-data" class="modal-wrapper js-modal-stop2">
+				<div class="add-modal-btns">
+					<button class="previous-modal-arrowleft js-previous-modal"><i class="fa-solid fa-arrow-left fa-xl"></i></button>
+					<button class="modal-add-project-close-xmark js-modal-close2"><i class="fa-solid fa-xmark fa-xl"></i></button>
+				</div>
+				<h2>Ajout photo</h2>
+				<div class="upload-content">
+					<div id="js-show-uploaded-image" class="showimage display_none"></div>
+					<div class="upload-img">
+						<img class="default-photo" src="./FrontEnd/assets/images/photo.PNG" alt="image default">
+						<input name="image" type="file" id="new-img" accept="image/png , image/jpg" class="input-img-btn">
+						<button id="ajout" class="ajout-btn">+ Ajouter photo</button>
+						<p>jpg, png : 4Mo max</p>
+					</div>
+					<label id="error-msg"></label>
+					<div class="upload-title-category">
+						<label>Titre</label>
+						<input name="title" id="new-title" class="input-title">
+						<label>Catégorie</label>
+						<select name="category" id="new-category" class="input-select">
+							<option value="">- Choisissez une catégorie -</option>
+							<option value="Objets">Objets</option>
+							<option value="Appartements">Appartements</option>
+							<option value="Hotels & restaurants">Hotels & restaurants</option>
+						</select>
+					</div>
+				</div>
+				<hr>
+				<button type="submit" id="validatePhoto" class="validate-btn validate">Valider</button>
+			</form>
     </aside>
 	<footer>
 		<nav>
