@@ -179,6 +179,7 @@ li > a:hover {
     background-color: #fff;
     padding: 0.5em 1.2em;
 	min-width: 6em;
+	cursor: pointer;
 }
 
 .selected_button {
@@ -562,4 +563,8 @@ footer nav ul {
 	margin-bottom: -10px;
 	font-size: 16px;
 	text-align: center;
+}
+
+#logout {
+	cursor: pointer;
 }
