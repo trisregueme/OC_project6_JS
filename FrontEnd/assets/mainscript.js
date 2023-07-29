@@ -92,74 +92,6 @@ async function deleteWork(id) {
     }
 }
 
-/* Functions to fetch API and generate modal/gallery
-// Fetching Gallery's element from API
-const reponse = await fetch('http://localhost:5678/api/works')
-let galleryContent = await reponse.json()
-console.log(galleryContent)
-
-// Function generate the gallery with API
-function generateMesProjets(array, target) {
-// Creating gallery from the API request
-    let gallery = target
-    for (let i=0; i<array.length; i++) {
-        const galleryElement = document.createElement("figure")
-
-        const galleryImage = document.createElement("img")
-        galleryImage.src = `${array[i].imageUrl}`
-        galleryImage.alt = `${array[i].title}`
-        galleryElement.appendChild(galleryImage)
-
-        const galleryCaption = document.createElement("figcaption")
-        galleryCaption.innerHTML = `${array[i].title}`
-        galleryElement.appendChild(galleryCaption)
-
-        gallery.appendChild(galleryElement)
-    }
-}
-const projets = document.querySelector(".gallery")
-generateMesProjets(galleryContent, projets)
-
-// Display gallery in modal
-const modalGallery = document.querySelector("#modal-gallery")
-function generateModal(array, target) {
-// HTML creation with json from the API request
-    const modal = target
-    for (let i=0; i<array.length; i++) {
-        // Creating a division for each project
-        const divModalImage = document.createElement("div")
-
-        // Creating modal's gallery from 
-        const modalImage = document.createElement("img")
-        modalImage.src = `${array[i].imageUrl}`
-        modalImage.alt = `${array[i].title}`
-        divModalImage.appendChild(modalImage)
-
-        // Creating Button to delete projects
-        const btnDeleteWork = document.createElement("i")
-        btnDeleteWork.classList.add("fa-trash-can","fa-solid","fa-lg")
-        btnDeleteWork.id = `${array[i].id}`
-        divModalImage.appendChild(btnDeleteWork)
-        btnDeleteWork.addEventListener("click", () => {
-            deleteWork(btnDeleteWork.id)
-        })
-
-        // Creating fake button to move work
-        const btnMoveWork = document.createElement("i")
-        btnMoveWork.classList.add("fa-arrows-up-down-left-right","fa-solid","fa-lg")
-        divModalImage.appendChild(btnMoveWork)
-
-        // Creating fake button to edit
-        const modalEdit = document.createElement("a")
-        modalEdit.innerHTML = "éditer"
-        divModalImage.appendChild(modalEdit)
-
-        modal.appendChild(divModalImage)
-        }
-    }
-generateModal(galleryContent, modalGallery)
-*/
-
 ////////// FILTERS
 // Displaying used filter
 let selected_btn = document.getElementsByClassName("btn")[0]
@@ -366,7 +298,7 @@ document.getElementById("add-project").addEventListener("submit", (e) => {
     fetch("http://localhost:5678/api/categories").then((response) => {
         console.log(response)
         if (response.ok) {
-            response.json().then((categorydata) => {
+            response.json().then(async(categorydata) => {
                 //Associating categories from the form to an id
                 for (let i = 0; i <= categorydata.length - 1; i++) {
                     if (category.value === categorydata[i].name) {
@@ -405,7 +337,7 @@ document.getElementById("add-project").addEventListener("submit", (e) => {
                                     window.alert(`Un problème est survenu lors de l'ajout du projet`)
                                 }
                             }
-                            creatingNewProject(formData)
+                            await creatingNewProject(formData)
                         } else {
                             errorMsg.innerHTML = "La photo est trop volumineuse (>4Mo)."
                             photo.value = null

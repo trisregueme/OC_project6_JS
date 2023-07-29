@@ -7,7 +7,15 @@ const swaggerUi = require('swagger-ui-express')
 const yaml = require('yamljs')
 const swaggerDocs = yaml.load('swagger.yaml')
 const app = express()
-app.use(cors())
+app.use(cors({
+  origin: '*'
+}))
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+  next(); 
+})
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(helmet({
