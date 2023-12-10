@@ -1,6 +1,4 @@
 # Welcome to the project called "Créez une page dynamique avec JavaScript" made with HTML, SASS & JavaScript !
 
-Before this project i only worked with HTML & CSS/SASS, this is the first time learning and applying JavaScript's functionnaliest to a static website.
-This was also the first time i had to interact with an API to get & update informations on a backend server.
-
-To see the result of this project you can either '$git clone' it and host a local server running the index.html, you can also follow this link : https://trisregueme.github.io/portfolio-architecte/ .
+- Before this project i only worked with HTML & CSS/SASS, this is the first time learning and applying JavaScript's functionnaliest to a static website.
+- This was also the first time i had to interact with an API to get & update informations on a backend server.
